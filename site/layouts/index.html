@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <div class="index-content">
+    <p>
+      Five looks, from barely-there to visibly damaged. All of them are
+      single-pass post-processes over the terminal's rendered frame: they change
+      light, not layout, and none of them move a glyph.
+    </p>
+    <p>
+      Each shader is a single file. Point
+      <code>experimental.pixelShaderPath</code> at one and open a new tab.
+      It needs Windows Terminal 1.16 or newer.
+    </p>
+  </div>
+
+  <div class="posts">
+    {{ range .Site.Data.looks }}
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="{{ .source }}">{{ .name }}</a>
+        </h2>
+        <div class="post-meta">
+          <span class="post-date">{{ .cost }}</span>
+        </div>
+        <div class="post-content">
+          <p>{{ .what }}</p>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+{{ end }}

@@ -1,0 +1,24 @@
+- name: grain.hlsl
+  what: Film grain only, with no colour shift, geometry or resampling.
+  cost: 1 sample per pixel
+  source: https://github.com/yethranayeh/wt-shader-lab/blob/main/shaders/grain.hlsl
+
+- name: neon.hlsl
+  what: Bright glyphs bloom in their own colour, with optional sub-pixel RGB split.
+  cost: 36 samples per pixel
+  source: https://github.com/yethranayeh/wt-shader-lab/blob/main/shaders/neon.hlsl
+
+- name: house.hlsl
+  what: Neon glow plus film grain. The everyday one.
+  cost: 37 samples per pixel
+  source: https://github.com/yethranayeh/wt-shader-lab/blob/main/shaders/house.hlsl
+
+- name: signal-loss.hlsl
+  what: Damaged-signal look for unfocused panes, torn bands and bursts included.
+  cost: 2 samples per pixel, 4 during a burst
+  source: https://github.com/yethranayeh/wt-shader-lab/blob/main/shaders/signal-loss.hlsl
+
+- name: pipboy.hlsl
+  what: Fallout Pip-Boy CRT with green phosphor, scanlines and a mild curve.
+  cost: 36 samples per pixel
+  source: https://github.com/yethranayeh/wt-shader-lab/blob/main/shaders/pipboy.hlsl
