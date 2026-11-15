@@ -6,8 +6,8 @@
 {
   "profiles": {
     "defaults": {
-      // Film grain. Does not change colour, geometry or resampling.
-      "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/grain.hlsl"
+      // The everyday look: neon glow plus film grain.
+      "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/house.hlsl"
     }
   },
 
