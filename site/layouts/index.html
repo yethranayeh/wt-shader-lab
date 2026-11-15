@@ -16,18 +16,20 @@
   </div>
 
   <div class="posts">
-    {{ range hugo.Data.looks }}
-      <article class="post on-list">
-        <h2 class="post-title">
-          <a href="{{ .source }}">{{ .name }}</a>
-        </h2>
-        <div class="post-meta">
-          <span class="post-date">{{ .cost }}</span>
-        </div>
-        <div class="post-content">
-          <p>{{ .what }}</p>
-        </div>
-      </article>
+    {{ with .Site.GetPage "/looks" }}
+      {{ range .Pages }}
+        <article class="post on-list">
+          <h2 class="post-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+          <div class="post-meta">
+            <span class="post-date">{{ .Params.cost }}</span>
+          </div>
+          <div class="post-content">
+            <p>{{ .Params.summary }}</p>
+          </div>
+        </article>
+      {{ end }}
     {{ end }}
   </div>
 {{ end }}

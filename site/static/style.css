@@ -1,0 +1,19 @@
+.look-meta {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.look-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 1.5rem;
+  background: #000;
+  border: 1px solid var(--code-border);
+}
+
+.look-source {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}

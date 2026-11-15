@@ -15,7 +15,7 @@ disableKinds = ["taxonomy", "term"]
   noClasses = false
 
 [pagination]
-  pagerSize = 5
+  pagerSize = 20
 
 [params]
   contentTypeName = "docs"
