@@ -1,0 +1,9 @@
+* text=auto eol=lf
+
+# Shaders are edited from both macOS and Windows. Normalising to LF keeps the
+# diffs readable and stops a CRLF checkout from rewriting the whole file.
+*.hlsl   text eol=lf
+*.hlsli  text eol=lf
+
+# Windows-only helper, run by CI on a Windows runner.
+*.ps1    text eol=crlf

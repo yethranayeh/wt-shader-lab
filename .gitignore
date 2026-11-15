@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Compiled shaders
+*.cso
+
+# Screen recordings are published through Cloudinary, never through git.
+# Only poster frames under site/static/media/ are committed.
+*.mp4
+*.mov
+
+# Hugo build output and cache
+site/public/
+site/resources/
+site/.hugo_build.lock
+
+# Node (only if the site ever grows a build step)
+node_modules/
