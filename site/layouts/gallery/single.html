@@ -21,7 +21,7 @@
       {{ range where hugo.Data.gallery "group" . }}
         <figure>
           {{ if .video }}
-            <video controls muted loop playsinline preload="none" poster="{{ .src }}">
+            <video controls muted loop playsinline preload="metadata" poster="{{ .src }}">
               <source src="{{ .video }}" type="video/mp4">
             </video>
           {{ else }}

@@ -15,7 +15,7 @@
   {{ end }}
 
   {{ if $video }}
-    <video class="look-video" controls muted loop playsinline preload="none"
+    <video class="look-video" controls muted loop playsinline preload="metadata"
       {{ with $poster }}poster="{{ . }}"{{ end }}>
       <source src="{{ $video }}" type="video/mp4">
     </video>

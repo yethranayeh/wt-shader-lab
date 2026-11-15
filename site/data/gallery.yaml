@@ -2,7 +2,7 @@
 # a Cloudinary URL with its transformation applied; an entry with video plays
 # instead of showing a still, using src as its poster.
 
-- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757810/house-splash_vwbm81.png
+- src: https://res.cloudinary.com/drwbqceye/video/upload/so_12,w_1200,q_auto/v1794759164/house-demo_vzgzik.jpg
   video: https://res.cloudinary.com/drwbqceye/video/upload/v1794759164/house-demo_vzgzik.mp4
   caption: house, on the glow test pattern
   group: Recording
