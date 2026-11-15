@@ -1,0 +1,30 @@
+# Every still in the gallery, in the order it should read. src is a Cloudinary
+# URL with its transformation already applied.
+
+- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757810/house-splash_vwbm81.png
+  caption: house, on the opencode splash
+  group: Single pane
+
+- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757810/signal-loss-splash_scyqag.png
+  caption: signal-loss on the same screen, as an unfocused appearance
+  group: Single pane
+
+- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757811/session-two-panes_f9wj2a.png
+  caption: house, two panes. The right one has lost focus
+  group: Two panes
+
+- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757810/signal-loss-two-panes_x6mmyj.png
+  caption: signal-loss on the same two panes
+  group: Two panes
+
+- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757808/neon-test-glow_e5frd8.png
+  caption: the glow test pattern, close up
+  group: Test pattern
+
+- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757810/neon-test-wide_wck6ze.png
+  caption: the same pattern, full width, on a light background
+  group: Test pattern
+
+- src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757808/neon-test-signal-loss_xqtdfz.png
+  caption: the same pattern under signal-loss
+  group: Test pattern

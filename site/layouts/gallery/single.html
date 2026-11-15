@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article class="post">
+  <h1 class="post-title">
+    <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+  </h1>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  {{ $groups := slice }}
+  {{ range hugo.Data.gallery }}
+    {{ if not (in $groups .group) }}
+      {{ $groups = $groups | append .group }}
+    {{ end }}
+  {{ end }}
+
+  {{ range $groups }}
+    <h2 class="gallery-group">{{ . }}</h2>
+    <div class="gallery">
+      {{ range where hugo.Data.gallery "group" . }}
+        <figure>
+          <img src="{{ .src }}" alt="{{ .caption }}" loading="lazy">
+          <figcaption>{{ .caption }}</figcaption>
+        </figure>
+      {{ end }}
+    </div>
+  {{ end }}
+</article>
+{{ end }}
