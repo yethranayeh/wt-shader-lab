@@ -8,12 +8,15 @@
     <p>
       Each shader is a single file. Point
       <code>experimental.pixelShaderPath</code> at one and open a new tab.
-      It needs Windows Terminal 1.16 or newer.
+      {{ with .Site.GetPage "/install" -}}
+      <a href="{{ .RelPermalink }}">Install</a> covers the settings file and the
+      toggle.
+      {{- end }}
     </p>
   </div>
 
   <div class="posts">
-    {{ range .Site.Data.looks }}
+    {{ range hugo.Data.looks }}
       <article class="post on-list">
         <h2 class="post-title">
           <a href="{{ .source }}">{{ .name }}</a>
