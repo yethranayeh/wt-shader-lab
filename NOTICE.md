@@ -12,7 +12,9 @@ The film-grain noise curve, its lookup constants, and the blur tap weights used 
 `crt.hlsl` in that repository.
 
 `shaders/pipboy.hlsl` is a copy of the same `crt.hlsl` with its tuning constants changed,
-so the derivation is direct and deliberate.
+so the derivation is direct and deliberate. Two lines differ for reasons that are not
+tuning: the debug switch is off, and the right-hand overscan test reads `uv.x` where
+upstream repeats `uv.y` and never checks the right edge.
 
 CC0 places no attribution requirement on any of this. The credit is here because the work
 deserves it, not because the license demands it.

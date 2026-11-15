@@ -2,9 +2,8 @@
 
 Pixel shaders for Windows Terminal that stay readable.
 
-Four looks so far. All of them are single-pass post-processes over the
-terminal's rendered frame — they change light, not layout, and none of them
-move a glyph.
+Five looks. All of them are single-pass post-processes over the terminal's
+rendered frame — they change light, not layout, and none of them move a glyph.
 
 | Shader | What it does | Cost |
 | --- | --- | --- |
@@ -12,6 +11,7 @@ move a glyph.
 | [`neon.hlsl`](shaders/neon.hlsl) | Bright glyphs bloom in their own colour, with optional sub-pixel RGB split. | 36 samples/px |
 | [`house.hlsl`](shaders/house.hlsl) | `neon` + grain. The everyday one. | 37 samples/px |
 | [`signal-loss.hlsl`](shaders/signal-loss.hlsl) | Damaged-signal look for unfocused panes: torn bands, ghosting, bursts with RGB split. | 2 samples/px, 4 during a burst |
+| [`pipboy.hlsl`](shaders/pipboy.hlsl) | Fallout Pip-Boy CRT: green phosphor, scanlines, mild curve. A tuned copy of upstream `crt.hlsl`. | 36 samples/px |
 
 ## Install
 
@@ -113,6 +113,24 @@ signal.
 
 Idle, that is two samples: the pane and its ghost. During a burst the pane
 needs three, one per colour at a different offset, plus the ghost.
+
+### pipboy.hlsl
+
+A Pip-Boy screen: green phosphor, scanlines, a mild tube curve. A tuned copy of
+`crt.hlsl` from Hammster/windows-terminal-shaders; NOTICE.md records where it
+differs.
+
+Each stage sits behind an `ENABLE_*` switch at the top: curve, overscan, bloom,
+blur, grayscale, blacklevel, refresh line, scanlines, tint, grain.
+
+| Define | Default | Notes |
+| --- | --- | --- |
+| `CURVE_INTENSITY` | `0.35` | The fisheye. Upstream ships `1`, which is much stronger |
+| `TINT_COLOR` | `TINT_PIPBOY` | `#12FF15`, Fallout 4's default. Amber and Apple II are defined beside it |
+| `BLACKLEVEL_FLOOR` | `TINT_COLOR / 30` | Lifts black to a phosphor glow |
+| `GRAYSCALE_LUMINANCE` | `1` | The enabled strategy. With bloom on, gleam and luma fall back to it |
+| `GRAIN_INTENSITY` | `0.025` | Same noise curve as `grain.hlsl` |
+| `BLUR_OFFSET` / `BLUR_STRENGTH` | `0.003` / `0.3` | Two 17-tap passes; with bloom, 36 samples/px |
 
 ## Unfocused panes
 
