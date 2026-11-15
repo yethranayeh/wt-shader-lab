@@ -3,6 +3,7 @@ title: signal-loss
 weight: 4
 cost: 2 samples per pixel, 4 during a burst
 summary: Damaged-signal look for unfocused panes, torn bands and bursts included.
+poster: https://res.cloudinary.com/drwbqceye/image/upload/w_1600,f_auto,q_auto/v1794757810/signal-loss-splash_scyqag.png
 source: https://github.com/yethranayeh/wt-shader-lab/blob/main/shaders/signal-loss.hlsl
 ---
 

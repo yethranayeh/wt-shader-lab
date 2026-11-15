@@ -8,11 +8,19 @@
     <div class="look-meta">{{ . }}</div>
   {{ end }}
 
-  {{ with .Params.video }}
+  {{ $video := .Params.video }}
+  {{ $poster := .Params.poster }}
+  {{ if and $poster (not (or (hasPrefix $poster "http") (hasPrefix $poster "//"))) }}
+    {{ $poster = $poster | relURL }}
+  {{ end }}
+
+  {{ if $video }}
     <video class="look-video" controls muted loop playsinline preload="none"
-      {{ with $.Params.poster }}poster="{{ . | relURL }}"{{ end }}>
-      <source src="{{ . }}" type="video/mp4">
+      {{ with $poster }}poster="{{ . }}"{{ end }}>
+      <source src="{{ $video }}" type="video/mp4">
     </video>
+  {{ else if $poster }}
+    <img class="look-video" src="{{ $poster }}" alt="{{ .Params.summary }}" loading="lazy">
   {{ end }}
 
   <div class="post-content">
