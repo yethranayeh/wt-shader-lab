@@ -1,3 +1,16 @@
+/* The theme caps images at 100% of their container and has no rule for video.
+   Uncaught, the video's intrinsic width becomes the min-content width of
+   .content and the page scrolls sideways: 1836 px of video in a 390 px window. */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.content,
+.content > * {
+  min-width: 0;
+}
+
 .look-meta {
   color: var(--accent);
   font-size: 0.9rem;
@@ -43,8 +56,10 @@
   width: 100%;
   height: auto;
   margin: 0;
+  padding: 0;
   background: #000;
   border: 1px solid var(--code-border);
+  border-radius: 0;
 }
 
 .gallery-group {
@@ -70,8 +85,10 @@
   width: 100%;
   height: auto;
   margin: 0;
+  padding: 0;
   background: #000;
   border: 1px solid var(--code-border);
+  border-radius: 0;
 }
 
 @media (max-width: 720px) {
