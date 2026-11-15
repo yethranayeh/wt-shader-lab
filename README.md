@@ -2,7 +2,7 @@
 
 Pixel shaders for Windows Terminal that stay readable.
 
-Three looks so far. All of them are single-pass post-processes over the
+Four looks so far. All of them are single-pass post-processes over the
 terminal's rendered frame — they change light, not layout, and none of them
 move a glyph.
 
@@ -11,6 +11,7 @@ move a glyph.
 | [`grain.hlsl`](shaders/grain.hlsl) | Film grain only. No colour shift, no geometry, no resampling. | 1 sample/px |
 | [`neon.hlsl`](shaders/neon.hlsl) | Bright glyphs bloom in their own colour, with optional sub-pixel RGB split. | 36 samples/px |
 | [`house.hlsl`](shaders/house.hlsl) | `neon` + grain. The everyday one. | 37 samples/px |
+| [`signal-loss.hlsl`](shaders/signal-loss.hlsl) | Damaged-signal look for unfocused panes: torn bands, ghosting, bursts with RGB split. | 2 samples/px, 4 during a burst |
 
 ## Install
 
@@ -90,6 +91,50 @@ other's way.
 | Define | Default | Notes |
 | --- | --- | --- |
 | `GRAIN_INTENSITY` | `0.02` | Same dial as `grain.hlsl` |
+
+### signal-loss.hlsl
+
+Built for `unfocusedAppearance`, so a pane that loses focus reads as a failing
+signal.
+
+| Define | Default | Notes |
+| --- | --- | --- |
+| `ANIMATE` | `1` | `0` removes every `Time` reference: frozen pattern, no redraw cost |
+| `DIM` | `0.70` | How far the pane recedes |
+| `BANDS` | `40.0` | Horizontal tear zones |
+| `BAND_CHANCE` | `0.90` | Share of rows that stay clean |
+| `BAND_DISPLACE` | `0.008` | Tear width as a fraction of pane width |
+| `GHOST_PX` / `GHOST_MIX` | `3.0` / `0.18` | Double-image offset and strength |
+| `STUCK_LINE` | `0.12` | Baseline brightness of frozen scan lines |
+| `BURST_EVERY` | `3.0` | Seconds per glitch slot |
+| `BURST_LENGTH` | `0.36` | Seconds a burst lasts |
+| `BURST_CHANCE` | `0.60` | Share of slots that fire |
+| `CA_BURST_PX` | `5.0` | Red/blue split during a burst, in pixels |
+
+Idle, that is two samples: the pane and its ghost. During a burst the pane
+needs three, one per colour at a different offset, plus the ghost.
+
+## Unfocused panes
+
+`unfocusedAppearance` accepts `experimental.pixelShaderPath` and applies per
+control, so it tracks pane and tab focus, not just window focus.
+
+```jsonc
+"profiles": {
+  "defaults": {
+    "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/house.hlsl",
+    "unfocusedAppearance": {
+      "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/signal-loss.hlsl"
+    }
+  }
+}
+```
+
+`toggleShaderEffects` flips only the focused appearance's shader path
+(`ControlCore::ToggleShaderEffects` reads the focused settings). The unfocused
+appearance re-applies its own shader when focus leaves, so the effect reappears
+on the pane you just left. Drop `unfocusedAppearance` if you want the toggle to
+be absolute.
 
 ## Design notes
 

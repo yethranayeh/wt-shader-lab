@@ -1,13 +1,18 @@
 // Windows Terminal settings snippet.
 // Merge these keys into your own settings.json -- do not replace the file.
 // Paths may use forward slashes on any Windows version.
-// Point the path below at wherever you cloned this repository.
+// Point the paths below at wherever you cloned this repository.
 
 {
   "profiles": {
     "defaults": {
       // The everyday look: neon glow plus film grain.
-      "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/house.hlsl"
+      "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/house.hlsl",
+
+      // Panes that lose focus read as a failing signal.
+      "unfocusedAppearance": {
+        "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/signal-loss.hlsl"
+      }
     }
   },
 
