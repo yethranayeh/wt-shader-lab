@@ -1,0 +1,10 @@
+<script>
+  // The home hero loops on its own. Autoplay ignores the preference that says
+  // not to, so stop it there and leave the poster in place.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("video[autoplay]").forEach(function (video) {
+      video.removeAttribute("autoplay");
+      video.pause();
+    });
+  }
+</script>

@@ -5,6 +5,26 @@
       single-pass post-processes over the terminal's rendered frame: they change
       light, not layout, and none of them move a glyph.
     </p>
+  </div>
+
+  {{ $hero := .Params.hero }}
+  {{ with $hero }}
+    {{ $look := $.Site.GetPage (printf "/looks/%s" .look) }}
+    <figure class="home-hero">
+      {{ if .video }}
+        <video autoplay muted loop playsinline preload="metadata" poster="{{ .poster }}">
+          <source src="{{ .video }}" type="video/mp4">
+        </video>
+      {{ else }}
+        <img src="{{ .poster }}" alt="{{ .caption }}">
+      {{ end }}
+      <figcaption>
+        {{ with $look }}<a href="{{ .RelPermalink }}">{{ $hero.caption }}</a>{{ else }}{{ $hero.caption }}{{ end }}
+      </figcaption>
+    </figure>
+  {{ end }}
+
+  <div class="index-content">
     <p>
       Each shader is a single file. Point
       <code>experimental.pixelShaderPath</code> at one and open a new tab.

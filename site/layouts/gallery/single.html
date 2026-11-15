@@ -20,7 +20,13 @@
     <div class="gallery">
       {{ range where hugo.Data.gallery "group" . }}
         <figure>
-          <img src="{{ .src }}" alt="{{ .caption }}" loading="lazy">
+          {{ if .video }}
+            <video controls muted loop playsinline preload="none" poster="{{ .src }}">
+              <source src="{{ .video }}" type="video/mp4">
+            </video>
+          {{ else }}
+            <img src="{{ .src }}" alt="{{ .caption }}" loading="lazy">
+          {{ end }}
           <figcaption>{{ .caption }}</figcaption>
         </figure>
       {{ end }}
