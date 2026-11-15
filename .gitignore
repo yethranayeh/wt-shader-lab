@@ -20,3 +20,9 @@ site/.hugo_build.lock
 
 # Node (only if the site ever grows a build step)
 node_modules/
+
+# Screenshots and stills staged at the repository root for upload. Published
+# images come back as URLs; nothing here belongs in a commit.
+/*.png
+/*.jpg
+/*.jpeg
