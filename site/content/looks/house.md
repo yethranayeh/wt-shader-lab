@@ -4,6 +4,7 @@ weight: 3
 cost: 37 samples per pixel
 summary: Neon glow plus film grain. The everyday one.
 poster: https://res.cloudinary.com/drwbqceye/image/upload/w_1600,f_auto,q_auto/v1794757810/house-splash_vwbm81.png
+video: https://res.cloudinary.com/drwbqceye/video/upload/v1794759164/house-demo_vzgzik.mp4
 source: https://github.com/yethranayeh/wt-shader-lab/blob/main/shaders/house.hlsl
 ---
 
