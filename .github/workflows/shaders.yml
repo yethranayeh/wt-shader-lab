@@ -1,0 +1,33 @@
+name: Shaders
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "shaders/**"
+      - "tools/compile-shaders.ps1"
+      - ".github/workflows/shaders.yml"
+  pull_request:
+    paths:
+      - "shaders/**"
+      - "tools/compile-shaders.ps1"
+      - ".github/workflows/shaders.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shaders-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile:
+    name: Compile with fxc
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Compile every shader
+        shell: pwsh
+        run: ./tools/compile-shaders.ps1
