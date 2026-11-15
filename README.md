@@ -154,6 +154,27 @@ appearance re-applies its own shader when focus leaves, so the effect reappears
 on the pane you just left. Drop `unfocusedAppearance` if you want the toggle to
 be absolute.
 
+## Demos
+
+Two stdlib-only Python scripts that render reference content into the terminal,
+so you can judge a threshold without guessing from real output.
+
+`demo/neon-test.py` is the synthetic pattern: the same stroke at 25, 50, 75 and
+100% brightness, one-pixel strokes, solid blocks, a black-to-white ramp, the
+ANSI palette, and a log block.
+
+`demo/testcard.py` is a whole Markdown page in ANSI: headings, body text, a
+table, syntax-highlighted code blocks, status chips, a 6×6×6 colour cube, a
+grayscale ramp, near-black and near-white steps for black-crush checks, and text
+attributes.
+
+```
+python demo/neon-test.py
+python demo/testcard.py
+```
+
+Run them in a new tab so you know which shader build you are looking at.
+
 ## Design notes
 
 **Threshold before blur.** A 1 px glyph stroke loses most of its brightness to a
