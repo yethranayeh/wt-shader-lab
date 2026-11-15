@@ -9,5 +9,10 @@
       // Film grain. Does not change colour, geometry or resampling.
       "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/grain.hlsl"
     }
-  }
+  },
+
+  "actions": [
+    // A/B the effect against no effect, without editing settings.json.
+    { "command": "toggleShaderEffects", "keys": "shift+f10" }
+  ]
 }
