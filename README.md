@@ -88,6 +88,10 @@ shader from this repository, try this one: the glow touches only bright pixels
 and the grain mostly shows on dark ones, so the two effects stay out of each
 other's way.
 
+The glow and noise code is the same as in `neon.hlsl` and `grain.hlsl`.
+`tools/check-shared-blocks.py` compares those symbols by name and fails when a
+copy drifts.
+
 | Define | Default | Notes |
 | --- | --- | --- |
 | `GRAIN_INTENSITY` | `0.02` | Same dial as `grain.hlsl` |

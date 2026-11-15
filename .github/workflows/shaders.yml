@@ -31,3 +31,12 @@ jobs:
       - name: Compile every shader
         shell: pwsh
         run: ./tools/compile-shaders.ps1
+
+  blocks:
+    name: Shared blocks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Compare the shared symbols
+        run: python3 tools/check-shared-blocks.py
