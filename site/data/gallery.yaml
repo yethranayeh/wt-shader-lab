@@ -7,6 +7,11 @@
   caption: house, on the glow test pattern
   group: Recording
 
+- src: https://res.cloudinary.com/drwbqceye/video/upload/so_3/v1794757955/zinn-sidepanel_jl93f5.jpg
+  video: https://res.cloudinary.com/drwbqceye/video/upload/v1794757955/zinn-sidepanel_jl93f5.mp4
+  caption: an unfocused pane
+  group: Recording
+
 - src: https://res.cloudinary.com/drwbqceye/image/upload/w_1200,f_auto,q_auto/v1794757810/house-splash_vwbm81.png
   caption: house, on the opencode splash
   group: Single pane
