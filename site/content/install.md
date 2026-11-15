@@ -48,3 +48,22 @@ which is how you tell what a shader is actually doing to a pane.
   { "command": "toggleShaderEffects", "keys": "shift+f10" }
 ]
 ```
+
+## Unfocused panes
+
+`unfocusedAppearance` takes the same key and applies per control, so it tracks
+pane and tab focus. The [gallery]({{< relref "/gallery" >}}) shows both states
+side by side, and [signal-loss]({{< relref "/looks/signal-loss" >}}) is built for
+this slot.
+
+```json
+"profiles": {
+  "defaults": {
+    "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/house.hlsl",
+    "unfocusedAppearance": {
+      "experimental.pixelShaderPath": "C:/path/to/wt-shader-lab/shaders/signal-loss.hlsl"
+    }
+  }
+}
+```
+

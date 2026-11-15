@@ -41,4 +41,4 @@ disableKinds = ["taxonomy", "term"]
         identifier = "github"
         name = "GitHub"
         url = "https://github.com/yethranayeh/wt-shader-lab"
-        weight = 3
+        weight = 4
