@@ -2,8 +2,12 @@
 
 Pixel shaders for Windows Terminal that stay readable.
 
-Five looks. All of them are single-pass post-processes over the terminal's
-rendered frame — they change light, not layout, and none of them move a glyph.
+[![Shaders](https://github.com/yethranayeh/wt-shader-lab/actions/workflows/shaders.yml/badge.svg)](https://github.com/yethranayeh/wt-shader-lab/actions/workflows/shaders.yml)
+[![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+Five looks, from barely-there to visibly damaged. All of them are single-pass
+post-processes over the terminal's rendered frame: they change light, not
+layout, and none of them move a glyph.
 
 | Shader | What it does | Cost |
 | --- | --- | --- |
@@ -13,11 +17,18 @@ rendered frame — they change light, not layout, and none of them move a glyph.
 | [`signal-loss.hlsl`](shaders/signal-loss.hlsl) | Damaged-signal look for unfocused panes: torn bands, ghosting, bursts with RGB split. | 2 samples/px, 4 during a burst |
 | [`pipboy.hlsl`](shaders/pipboy.hlsl) | Fallout Pip-Boy CRT: green phosphor, scanlines, mild curve. A tuned copy of upstream `crt.hlsl`. | 36 samples/px |
 
+Cost is texture samples per pixel per frame.
+
 ## Install
 
 Point `experimental.pixelShaderPath` at whichever shader you want. Per-profile is
 the sane default; `profiles.defaults` applies it to everything. The examples use
 `house.hlsl`.
+
+The settings file is
+`%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json`
+for the Store build, and `%LOCALAPPDATA%\Microsoft\Windows Terminal\settings.json`
+for the unpackaged one.
 
 Every shader is a standalone file: copy one into your own configuration and it
 still works.
@@ -184,8 +195,7 @@ Run them in a new tab so you know which shader build you are looking at.
 **Threshold before blur.** A 1 px glyph stroke loses most of its brightness to a
 wide blur. Gating the *blurred* result hides exactly the brightest thin text
 while large bright blocks sail through. Thresholding each tap before weighting
-is what a real bloom pass does, and it is why `emit()` runs per sample instead of
-once on the sum.
+is what a real bloom pass does, and it is why `emit()` runs per sample.
 
 **Gate on peak channel.** Luma weights blue at 0.07, so blue and purple text
 would never cross the threshold and would stay flat while everything else
