@@ -17,7 +17,7 @@
   },
 
   "actions": [
-    // A/B the effect against no effect, without editing settings.json.
+    // A/B the effect against no effect, and force a recompile after editing a shader.
     { "command": "toggleShaderEffects", "keys": "shift+f10" }
   ]
 }

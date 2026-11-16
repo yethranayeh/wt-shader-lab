@@ -47,17 +47,25 @@ you can copy from.
 Requires Windows Terminal 1.16 or newer: pixel shaders only work on the Atlas
 renderer, which became the default in that version.
 
-A shader that fails to compile produces a warning dialog and is ignored until
-you fix it and re-save `settings.json` or open a new tab. Shaders are compiled
-per pane, so an already-open pane keeps the old one — **open a new tab** after
-editing a shader.
+Changing `experimental.pixelShaderPath` takes effect immediately, in every open
+pane using that profile; no new tab is needed.
+
+Editing a shader file is the exception: the renderer recompiles when the path
+value changes, so a saved `.hlsl` edit with the same path is ignored. Force a
+recompile by toggling the effect off and on with `toggleShaderEffects`
+(`Shift+F10` in [`examples/settings.jsonc`](examples/settings.jsonc)), or by
+pointing the setting at another file and back.
+
+A shader that fails to compile produces a warning dialog and is ignored until you
+fix the file and force a recompile the same way.
 
 Forward slashes work on any Windows version. Recent builds (1.24+) also accept a
 path relative to `settings.json`.
 
 ## Tuning
 
-Every knob is a `#define` at the top of the file. Edit, save, open a new tab.
+Every knob is a `#define` at the top of the file. Edit, save, then force a
+recompile.
 
 ### grain.hlsl
 
@@ -188,7 +196,8 @@ python demo/neon-test.py
 python demo/testcard.py
 ```
 
-Run them in a new tab so you know which shader build you are looking at.
+Run them after forcing a recompile, so you know which shader build you are
+looking at.
 
 ## Design notes
 
