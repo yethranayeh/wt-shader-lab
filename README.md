@@ -13,7 +13,7 @@ layout, and none of them move a glyph.
 | --- | --- | --- |
 | [`grain.hlsl`](shaders/grain.hlsl) | Film grain only. No colour shift, no geometry, no resampling. | 1 sample/px |
 | [`neon.hlsl`](shaders/neon.hlsl) | Bright glyphs bloom in their own colour, with optional sub-pixel RGB split. | 36 samples/px |
-| [`house.hlsl`](shaders/house.hlsl) | `neon` + grain. The everyday one. | 37 samples/px |
+| [`house.hlsl`](shaders/house.hlsl) | `neon` + grain. The everyday one. | 36 samples/px |
 | [`signal-loss.hlsl`](shaders/signal-loss.hlsl) | Damaged-signal look for unfocused panes: torn bands, ghosting, bursts with RGB split. | 2 samples/px, 4 during a burst |
 | [`pipboy.hlsl`](shaders/pipboy.hlsl) | Fallout Pip-Boy CRT: green phosphor, scanlines, mild curve. A tuned copy of upstream `crt.hlsl`. | 36 samples/px |
 
